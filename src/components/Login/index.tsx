@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface Props {
   setShow: (value: boolean) => void;
@@ -28,10 +29,19 @@ function Login({ setShow }: Props) {
   });
   const navigate = useNavigate();
   const onSubmit = (data: any) => {
-    console.log(data);
-    navigate("/homepage");
+    // console.log(data);
+    let token;
+    axios
+      .post("https://sql-dev-india.thewitslab.com:3003/auth/login", data)
+      .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        token = localStorage.getItem("token");
+        console.log(token);
+        token ? navigate("/homepage") : navigate("/");
+      });
   };
-
+  // https://sql-dev-india.thewitslab.com:3003/auth/login
+  // {"email":"narinder.singla@thewitslab.com","password":"Singl@8284"}
   return (
     <LoginMainWrapper>
       <LoginWrapper>

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 interface Props {
   setShow: (value: boolean) => void;
 }
-function SignUp({ setShow }: Props) {
+const SignUp = ({ setShow }: Props) => {
   const {
     register,
     handleSubmit,
@@ -64,7 +64,7 @@ function SignUp({ setShow }: Props) {
       </SignupWrapper>
     </SignupMainWrapper>
   );
-}
+};
 
 export default SignUp;
 
