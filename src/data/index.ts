@@ -1,4 +1,4 @@
-export const StaticPets = [
+export const staticData = [
   {
     name: "Lucky",
     breed: "husky",
@@ -36,7 +36,7 @@ export const StaticPets = [
   },
   {
     name: "Milo",
-    breed: "Golden Retriever",
+    breed: "Golden",
     animal: "dog",
     ImageUrl:
       "https://media.istockphoto.com/id/1372099513/photo/shot-of-a-handsome-young-man-sitting-with-his-border-collie-in-the-living-room-and-using-his.jpg?b=1&s=170667a&w=0&k=20&c=aTGuwKqEGe4iDEAS7-JDl36aHl0HDWR_5zYUxV46DZ4=",

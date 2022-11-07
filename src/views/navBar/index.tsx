@@ -1,11 +1,14 @@
-import petshop from "assets/images/logo.jpeg";
+import petshop from "assets/images/petshoplogo.jpeg";
 import styled from "styled-components";
 import { BsCart2, BsBookmarkHeart } from "react-icons/bs";
+import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <NavBarMainWrapper>
       <NavLogoWrapper>
-        <NavLogo src={petshop} alt="logo" />
+        <Link to={"/homepage"}>
+          <NavLogo src={petshop} alt="logo" />
+        </Link>
       </NavLogoWrapper>
       <NavCategoriesWrapper>
         <Category>Cats</Category>
@@ -29,12 +32,14 @@ export default NavBar;
 
 // styles
 const NavBarMainWrapper = styled.div`
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #e7e9eb;
   gap: 0.5vw;
   color: #6d8297;
+  position: fixed;
 `;
 
 const NavLogoWrapper = styled.div`
