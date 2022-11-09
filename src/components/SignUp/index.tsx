@@ -1,14 +1,39 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 interface Props {
   setShow: (value: boolean) => void;
 }
+
+interface FormInputs {
+  userName: string;
+  email: string;
+  password: string;
+  number: number;
+}
+
+const schema = yup.object().shape({
+  userName: yup.string().required("Username is a required field"),
+  email: yup.string().email().required("Email is a required field"),
+  password: yup
+    .string()
+    .required("Please enter your password")
+    .matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      // "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+      "Password must contain at least 8 characters"
+    ),
+});
+
 const SignUp = ({ setShow }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormInputs>({
+    resolver: yupResolver(schema),
+  });
   const onSubmit = (data: any) => {
     alert("Successfully created user");
     console.log(data);
@@ -26,33 +51,29 @@ const SignUp = ({ setShow }: Props) => {
             <Label>Username</Label>
           </LabelWrapper>
           <InputWrapper>
-            <Input type="text" {...register("username", { required: true })} />
+            <Input type="text" {...register("userName")} />
           </InputWrapper>
-          {errors.email && <ErrorMsg>userName is required</ErrorMsg>}
+          {errors.userName && <ErrorMsg>{errors.userName?.message}</ErrorMsg>}
           <LabelWrapper>
             <Label>Email</Label>
           </LabelWrapper>
           <InputWrapper>
-            <Input type="Email" {...register("email", { required: true })} />
+            <Input type="Email" {...register("email")} />
           </InputWrapper>
-          {errors.email && <ErrorMsg>email is required</ErrorMsg>}
+          {errors.email && <ErrorMsg>{errors.email?.message}</ErrorMsg>}
           <LabelWrapper>
             <Label>Password</Label>
           </LabelWrapper>
           <InputWrapper>
-            <Input
-              type="Password"
-              {...register("password", { required: true })}
-            />
+            <Input type="Password" {...register("password")} />
           </InputWrapper>
-          {errors.password && <ErrorMsg>password is required</ErrorMsg>}
+          {errors.password && <ErrorMsg>{errors.password?.message}</ErrorMsg>}
           <LabelWrapper>
             <Label>Phone</Label>
           </LabelWrapper>
           <InputWrapper>
-            <Input type="Number" {...register("number", { required: true })} />
+            <Input type="Number" {...register("number")} />
           </InputWrapper>
-          {errors.number && <ErrorMsg>email is required</ErrorMsg>}
           <SignupButtonWrapper>
             <SignupButton type="submit">Sign up</SignupButton>
           </SignupButtonWrapper>
