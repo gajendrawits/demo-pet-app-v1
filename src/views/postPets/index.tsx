@@ -28,10 +28,10 @@ const PostPets = () => {
     <PostPetsFormWrapper>
       <PostPetsForm onSubmit={handleSubmit(onSubmit)}>
         <LabelWrapper>
-          <Label>owner name</Label>
+          <Label>Owner name</Label>
         </LabelWrapper>
         <InputWrapper>
-          <Input type="text" {...register("ownerName", { required: true })} />
+          <Input type="text" {...register("OwnerName", { required: true })} />
         </InputWrapper>
         {errors.ownerName && <ErrorMsg>OwnerName is required</ErrorMsg>}
         <LabelWrapper>
@@ -88,7 +88,7 @@ const PostPets = () => {
 export default PostPets;
 
 // styles
-const PostPetsFormWrapper = styled.form`
+const PostPetsFormWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,6 +101,7 @@ const PostPetsForm = styled.form`
 `;
 const LabelWrapper = styled.div`
   padding: 0.2vw 0.2vw;
+  width: 30vw;
 `;
 const Label = styled.label`
   font-size: 1vw;
@@ -111,16 +112,21 @@ const InputWrapper = styled.div`
   padding: 0.2vw 0.2vw;
 `;
 const Input = styled.input`
-  width: 30vw;
+  width: 29vw;
   height: 3.5vh;
   border: none;
   border-radius: 8px;
+  padding: 0.4vw;
+  :focus {
+    outline: none;
+    background-color: #eab9c1;
+    font-size: 1vw;
+  }
 `;
 
 const AddButtonWrapper = styled.div`
   padding: 1vw 0;
   width: 30vw;
-  margin-left: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,7 +149,7 @@ const ErrorMsg = styled.span`
 `;
 
 const RadioWrapper = styled.span`
-  margin-left: 10vw;
+  padding-left: 8vw;
   font-size: 1vw;
   font-weight: 700;
 `;
