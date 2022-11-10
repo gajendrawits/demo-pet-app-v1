@@ -5,7 +5,7 @@ import PostPets from "views/postPets";
 import AllPets from "views/allPets";
 import Footer from "views/footer";
 
-function HomePage() {
+const HomePage = () => {
   return (
     <HomePageMainWrapper>
       <NavBar />
@@ -15,7 +15,7 @@ function HomePage() {
       <Footer />
     </HomePageMainWrapper>
   );
-}
+};
 
 export default HomePage;
 

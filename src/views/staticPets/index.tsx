@@ -7,7 +7,7 @@ interface PetsProps {
   animal: string;
   ImageUrl?: string;
 }
-function StaticPets() {
+const StaticPets = () => {
   return (
     <ContentMainWrapper>
       {staticData.map((pet: PetsProps, index: number) => {
@@ -26,7 +26,7 @@ function StaticPets() {
       })}
     </ContentMainWrapper>
   );
-}
+};
 
 export default StaticPets;
 
@@ -37,7 +37,7 @@ const ContentMainWrapper = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 0.5vw;
-  padding: 7vw 0;
+  padding: 2vw 0;
 `;
 
 const ContentWrapper = styled.div`
