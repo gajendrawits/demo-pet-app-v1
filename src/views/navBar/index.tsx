@@ -2,7 +2,7 @@ import petshop from "assets/images/logo.jpeg";
 import styled from "styled-components";
 import { BsCart2, BsBookmarkHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
-function NavBar() {
+const NavBar = () => {
   return (
     <NavBarMainWrapper>
       <NavLogoWrapper>
@@ -11,23 +11,12 @@ function NavBar() {
         </Link>
       </NavLogoWrapper>
       <NavCategoriesWrapper>
-        <Link to="/homepage/cats" className="links">
-          Cats
-        </Link>
-        <Link to="/" className="links">
+        <Link to={"/homepage/doggie"} className="links">
           Dogs
         </Link>
-        <Link to="/" className="links">
+        <Link to={"/homepage/fish"} className="links">
           Fish
         </Link>
-        <Link to="/" className="links">
-          Kitty
-        </Link>
-
-        {/*<Category> Cats</Category
-         <Category> Dogs</Category>
-        <Category>Parrots</Category>
-        <Category>Rabbits</Category> */}
       </NavCategoriesWrapper>
       <NavCartWrapper>
         <CartWrapper>
@@ -39,20 +28,21 @@ function NavBar() {
       </NavCartWrapper>
     </NavBarMainWrapper>
   );
-}
+};
 
 export default NavBar;
 
 // styles
 const NavBarMainWrapper = styled.div`
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #e7e9eb;
   gap: 0.5vw;
   color: #6d8297;
-  position: fixed;
+  padding: 0.5vw;
+  /* position: fixed; */
 `;
 
 const NavLogoWrapper = styled.div`
@@ -87,14 +77,6 @@ const NavCategoriesWrapper = styled.div`
     }
   }
 `;
-
-// const Category = styled.div`
-//   :hover {
-//     cursor: pointer;
-//     color: #696969;
-//     transform: scale(1.2);
-//   }
-// `;
 
 const NavCartWrapper = styled.div`
   display: flex;
