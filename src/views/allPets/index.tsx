@@ -14,32 +14,26 @@ import {
 const AllPets = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(data, "alldata");
 
   const PER_PAGE = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   //12,24,36
   const offset = currentPage * PER_PAGE;
-  console.log("offset", offset);
 
   //total pages
   const pageCount = Math.ceil(data.length / PER_PAGE);
-  console.log(pageCount, "pagecount");
 
   //perPage items(12 perpage)
   const Items = data.slice(offset, offset + PER_PAGE);
-  console.log("items", Items);
 
   function handlePageClick({ selected: selectedPage }: any) {
     console.log("selectedPage", selectedPage);
     setCurrentPage(selectedPage);
   }
 
-  let status;
-
   const handleClick = (e: any) => {
-    status = e.target.value;
+    let status = e.target.value;
     setLoading(true);
     axios
       .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`)

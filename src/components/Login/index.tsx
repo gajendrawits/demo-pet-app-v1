@@ -35,23 +35,28 @@ function Login({ setShow }: Props) {
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
+
   const onSubmit = (data: any) => {
     // console.log(data);
-    let token;
     axios
       .post("https://sql-dev-india.thewitslab.com:3003/auth/login", data)
       .then((response) => {
         localStorage.setItem("token", response.data.token);
-        token = localStorage.getItem("token");
+        let token = localStorage.getItem("token");
         console.log(token);
-        token ? navigate("/homepage") : navigate("/");
+        token ? navigate("/") : navigate("/loginAndsignup");
       });
+  };
+
+  const handleBack = () => {
+    navigate("/");
   };
   // https://sql-dev-india.thewitslab.com:3003/auth/login
   // {"email":"narinder.singla@thewitslab.com","password":"Singl@8284"}
   return (
     <LoginMainWrapper>
       <LoginWrapper>
+        <BackButton onClick={handleBack}>⬅Back</BackButton>
         <LoginHeadingWrapper>
           <LoginHeading>Log in</LoginHeading>
         </LoginHeadingWrapper>
@@ -153,6 +158,21 @@ const TextLink = styled.span`
   font-size: 1vw;
   color: #1877f2;
   cursor: pointer;
+`;
+
+const BackButton = styled.button`
+  background-color: #2e85f7;
+  border-radius: 5%;
+  border: none;
+  color: white;
+  font-size: 0.8vw;
+  font-weight: 500;
+  :hover {
+    cursor: pointer;
+    background-color: red;
+    color: black;
+    transform: scale(1.2);
+  }
 `;
 
 const ErrorMsg = styled.span`

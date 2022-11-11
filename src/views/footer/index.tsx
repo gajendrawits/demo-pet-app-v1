@@ -64,10 +64,11 @@ const FooterMainWrapper = styled.div`
 `;
 
 const FooterWrapper = styled.div`
+  padding: 1vw 0 1vw 5vw;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 1vw;
+  justify-content: flex-start;
+  gap: 9vw;
 `;
 const LogoWrapper = styled.div`
   width: 5vw;

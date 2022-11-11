@@ -7,6 +7,7 @@ const PostPets = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const onSubmit = async (data: any) => {
     console.log(data, "datasend");
@@ -22,6 +23,7 @@ const PostPets = () => {
         console.log(response.data, "res");
       });
     alert("Successfully Added pet");
+    reset();
   };
 
   return (

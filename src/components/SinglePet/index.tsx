@@ -1,20 +1,26 @@
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { buyPet } from "redux/pet/petActions";
 
 export const SinglePet = ({ data }: any) => {
+  const dispatch = useDispatch();
+
   return (
     <MainWrapper>
       {data?.map((item: any, index: number) => {
         return (
           <ContentWrapper key={index}>
-            <Text>Name: {item.name}</Text>
-            <Text>Category: {item.category?.name}</Text>
-            {/* <Text>Breed: {item?.tags[0]?.name}</Text> */}
-            <Text>Status: {item.status}</Text>
+            <Text>Name: {item?.name}</Text>
+            <Text>Category: {item?.category?.name}</Text>
+            <Text>Breed: {item?.tags[0]?.name}</Text>
+            <Text>Status: {item?.status}</Text>
             <ButtonWrapper>
-              <Button>Add To 🛒</Button>
+              <Button onClick={() => dispatch(buyPet(item))}>Add To 🛒</Button>
               <Button>Add To ♥️</Button>
             </ButtonWrapper>
-            {/* <Image src={item.photoUrls} alt="Pet Image" /> */}
+            <ImageWrapper>
+              <Image src={item?.photoUrls} alt={item?.name} />
+            </ImageWrapper>
           </ContentWrapper>
         );
       })}
@@ -27,9 +33,8 @@ const MainWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-top: 1vw;
   gap: 1vw;
-  padding: 0 1vw;
+  padding: 1vw 1vw;
 `;
 
 const ContentWrapper = styled.div`
@@ -39,7 +44,7 @@ const ContentWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   width: 15.3vw;
-  height: 30vh;
+  height: 35vh;
   background-color: #e7e9eb;
   border-radius: 3%;
   box-shadow: 0.5vw 0.5vw #8fafce;
@@ -73,7 +78,10 @@ const Button = styled.button`
     transform: scale(1.2);
   }
 `;
-// const Image = styled.img`
-//   width: 15vw;
-//   height: 20vh;
-// `;
+const ImageWrapper = styled.div`
+  padding: 1vw 0;
+`;
+const Image = styled.img`
+  width: 2.6vw;
+  height: auto;
+`;

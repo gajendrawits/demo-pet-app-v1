@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 interface Props {
   setShow: (value: boolean) => void;
 }
@@ -39,9 +40,15 @@ const SignUp = ({ setShow }: Props) => {
     console.log(data);
     setShow(true);
   };
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
     <SignupMainWrapper>
       <SignupWrapper>
+        <BackButton onClick={handleBack}>⬅Back</BackButton>
         <SignupHeadingWrapper>
           <SignupHeading>Sign up</SignupHeading>
         </SignupHeadingWrapper>
@@ -160,6 +167,21 @@ const TextLink = styled.span`
   font-size: 1vw;
   color: #1877f2;
   cursor: pointer;
+`;
+
+const BackButton = styled.button`
+  background-color: #2e85f7;
+  border-radius: 5%;
+  border: none;
+  color: white;
+  font-size: 0.8vw;
+  font-weight: 500;
+  :hover {
+    cursor: pointer;
+    background-color: red;
+    color: black;
+    transform: scale(1.2);
+  }
 `;
 
 const ErrorMsg = styled.span`

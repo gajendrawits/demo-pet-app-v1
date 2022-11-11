@@ -13,13 +13,12 @@ export default Loader;
 
 // styles
 const Wrapper = styled.div`
-  height: 50vh;
+  height: 67vh;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 const MainLoader = styled.div`
-  margin: auto;
   border: 1vw solid #f3f3f3;
   border-radius: 50%;
   border-top: 1vw solid green;
