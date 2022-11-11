@@ -1,4 +1,6 @@
 import { staticData } from "data";
+import { useDispatch } from "react-redux";
+import { buyPet } from "redux/pet/petActions";
 import styled from "styled-components";
 
 interface PetsProps {
@@ -8,6 +10,7 @@ interface PetsProps {
   ImageUrl?: string;
 }
 const StaticPets = () => {
+  const dispatch = useDispatch();
   return (
     <ContentMainWrapper>
       {staticData.map((pet: PetsProps, index: number) => {
@@ -21,6 +24,10 @@ const StaticPets = () => {
             <ImgWrapper>
               <Image src={pet?.ImageUrl} alt="img" />
             </ImgWrapper>
+            <ButtonWrapper>
+              <Button onClick={() => dispatch(buyPet(pet))}>Add To 🛒</Button>
+              <Button>Add To ♥️</Button>
+            </ButtonWrapper>
           </ContentWrapper>
         );
       })}
@@ -37,12 +44,12 @@ const ContentMainWrapper = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 0.5vw;
-  padding: 2vw 0;
+  padding: 9vw 0;
 `;
 
 const ContentWrapper = styled.div`
   width: 24vw;
-  height: 40vh;
+  height: 44vh;
   gap: 0.5vw;
   border-radius: 3%;
   background-color: #e7e9eb;
@@ -57,6 +64,25 @@ const TextWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 1vw;
+`;
+
+const Button = styled.button`
+  font-size: 1vw;
+  font-weight: 900;
+  background-color: #29abe2;
+  border: none;
+  color: #f4a550;
+  border-radius: 5%;
+  cursor: pointer;
+  :hover {
+    background-color: green;
+    color: white;
+    transform: scale(1.2);
+  }
 `;
 
 const Text = styled.div`

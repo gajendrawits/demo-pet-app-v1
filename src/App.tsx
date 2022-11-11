@@ -5,12 +5,12 @@ import LoginAndSignUp from "./pages/loginAndSignUp";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginAndSignUp />} />
-          <Route path="/homepage" element={<HomePage />} />
-          <Route path="/homepage/:category" element={<Categories />} />
+          <Route path="/loginAndsignup" element={<LoginAndSignUp />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/:category" element={<Categories />} />
         </Routes>
       </BrowserRouter>
     </div>
