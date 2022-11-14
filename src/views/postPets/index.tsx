@@ -143,6 +143,9 @@ const AddButton = styled.button`
   font-weight: 900;
   border: none;
   border-radius: 8px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 const ErrorMsg = styled.span`
   color: red;

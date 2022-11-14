@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const NavBar = () => {
   const numOfPets = useSelector((state: any) => state.pet.numOfPets);
-  console.log(numOfPets, "total items in cart");
+  // console.log(numOfPets, "total items in cart");
   return (
     <NavBarMainWrapper>
       <NavLogoWrapper>
@@ -24,8 +24,10 @@ const NavBar = () => {
       </NavCategoriesWrapper>
       <NavCartWrapper>
         <CartWrapper>
-          <CartShowItems>{numOfPets.length}</CartShowItems>
-          <BsCart2 />
+          <Link to={"/cart"}>
+            <CartShowItems>{numOfPets.length}</CartShowItems>
+            <BsCart2 />
+          </Link>
         </CartWrapper>
         <WishListWrapper>
           <BsBookmarkHeart />

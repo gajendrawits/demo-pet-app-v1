@@ -1,4 +1,4 @@
-import { BUY_PET } from "./petTypes";
+import { BUY_PET, REMOVE_FROM_CART } from "./petTypes";
 
 const initialState = {
   numOfPets: [],
@@ -18,6 +18,7 @@ const petReducer = (state = initialState, action: any) => {
           ? state.numOfPets
           : [...state.numOfPets, action.payload],
       };
+
     default:
       return state;
   }

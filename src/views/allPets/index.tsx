@@ -5,9 +5,12 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import {
   Heading,
+  HeadingAndSelectWrapper,
   MainWrapper,
   SelectBox,
   SelectOptions,
+  SelectWrapper,
+  StatusText,
   Wrapper,
 } from "styles/Views/allPets";
 
@@ -55,13 +58,18 @@ const AllPets = () => {
 
   return (
     <MainWrapper>
-      <Heading>Select By Status</Heading>
-      <SelectBox onChange={handleClick}>
-        <SelectOptions>-select-</SelectOptions>
-        <SelectOptions>available</SelectOptions>
-        <SelectOptions>sold</SelectOptions>
-        <SelectOptions>pending</SelectOptions>
-      </SelectBox>
+      <HeadingAndSelectWrapper>
+        <Heading>Pets</Heading>
+        <SelectWrapper>
+          <StatusText>Select by status</StatusText>
+          <SelectBox onChange={handleClick}>
+            <SelectOptions>select</SelectOptions>
+            <SelectOptions>available</SelectOptions>
+            <SelectOptions>sold</SelectOptions>
+            <SelectOptions>pending</SelectOptions>
+          </SelectBox>
+        </SelectWrapper>
+      </HeadingAndSelectWrapper>
       {loading ? (
         <Loader />
       ) : (
