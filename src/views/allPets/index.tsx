@@ -2,6 +2,7 @@ import axios from "axios";
 import Loader from "components/Loader";
 import { SinglePet } from "components/SinglePet";
 import { useEffect, useState } from "react";
+
 import ReactPaginate from "react-paginate";
 import {
   Heading,
@@ -12,13 +13,15 @@ import {
   SelectWrapper,
   StatusText,
   Wrapper,
+  NoPetHeading,
 } from "styles/Views/allPets";
 
 const AllPets = () => {
   const [data, setData] = useState([]);
+  console.log(data, "sold data");
   const [loading, setLoading] = useState(false);
 
-  const PER_PAGE = 10;
+  const PER_PAGE = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
   //12,24,36
@@ -29,6 +32,7 @@ const AllPets = () => {
 
   //perPage items(12 perpage)
   const Items = data.slice(offset, offset + PER_PAGE);
+  console.log("items", Items);
 
   function handlePageClick({ selected: selectedPage }: any) {
     console.log("selectedPage", selectedPage);
@@ -37,6 +41,7 @@ const AllPets = () => {
 
   const handleClick = (e: any) => {
     let status = e.target.value;
+    console.log(status, "e target");
     setLoading(true);
     axios
       .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`)
@@ -63,7 +68,7 @@ const AllPets = () => {
         <SelectWrapper>
           <StatusText>Select by status</StatusText>
           <SelectBox onChange={handleClick}>
-            <SelectOptions>select</SelectOptions>
+            <SelectOptions>-select-</SelectOptions>
             <SelectOptions>available</SelectOptions>
             <SelectOptions>sold</SelectOptions>
             <SelectOptions>pending</SelectOptions>
@@ -74,18 +79,24 @@ const AllPets = () => {
         <Loader />
       ) : (
         <Wrapper>
-          <SinglePet data={Items} />
-          <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
-            pageCount={pageCount}
-            onPageChange={handlePageClick}
-            containerClassName={"pagination"}
-            previousLinkClassName={"pagination__link"}
-            nextLinkClassName={"pagination__link"}
-            disabledClassName={"pagination__link--disabled"}
-            activeClassName={"pagination__link--active"}
-          />
+          {Items.length === 0 ? (
+            <NoPetHeading>No Pets To Show</NoPetHeading>
+          ) : (
+            <>
+              <SinglePet data={Items} />
+              <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                containerClassName={"pagination"}
+                previousLinkClassName={"pagination__link"}
+                nextLinkClassName={"pagination__link"}
+                disabledClassName={"pagination__link--disabled"}
+                activeClassName={"pagination__link--active"}
+              />
+            </>
+          )}
         </Wrapper>
       )}
     </MainWrapper>

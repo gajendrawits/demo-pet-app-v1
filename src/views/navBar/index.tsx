@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const NavBar = () => {
   const numOfPets = useSelector((state: any) => state.pet.numOfPets);
+  const wishPets = useSelector((state: any) => state.wishPet.wishPets);
+  console.log(wishPets, "wishpets");
+
   // console.log(numOfPets, "total items in cart");
   return (
     <NavBarMainWrapper>
@@ -30,7 +33,10 @@ const NavBar = () => {
           </Link>
         </CartWrapper>
         <WishListWrapper>
-          <BsBookmarkHeart />
+          <Link to={"#"}>
+            <WishListShow>{wishPets.length}</WishListShow>
+            <BsBookmarkHeart />
+          </Link>
         </WishListWrapper>
         <Link to={"/loginAndsignup"} className="links">
           <VscAccount />
@@ -124,10 +130,25 @@ const CartShowItems = styled.div`
     background-color: green;
   }
 `;
+
 const WishListWrapper = styled.div`
   :hover {
     cursor: pointer;
     color: #696969;
+  }
+`;
+
+const WishListShow = styled.div`
+  position: absolute;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  top: 20%;
+  left: 91%;
+  font-size: 1vw;
+  padding: 2px 8px;
+  :hover {
     transform: scale(1.2);
+    background-color: green;
   }
 `;

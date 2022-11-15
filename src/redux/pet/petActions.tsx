@@ -1,5 +1,4 @@
-import { BUY_PET } from "./petTypes";
-import { REMOVE_FROM_CART } from "./petTypes";
+import { BUY_PET, CLEAR_CART, REMOVE_FROM_CART, WISH_PET } from "./petTypes";
 
 export const buyPet = (petCount: any) => {
   console.log(petCount, "pets");
@@ -14,5 +13,19 @@ export const removePet = (removePet: any) => {
   return {
     type: REMOVE_FROM_CART,
     payload: removePet,
+  };
+};
+
+export const clearAllPets = () => {
+  return {
+    type: CLEAR_CART,
+  };
+};
+
+export const wishPet = (wishPet: any) => {
+  console.log(wishPet, "wishpet");
+  return {
+    type: WISH_PET,
+    payload: wishPet,
   };
 };

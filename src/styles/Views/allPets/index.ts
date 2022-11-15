@@ -72,3 +72,11 @@ export const Dummy = styled.div`
   margin: 0 auto;
   border: 1px solid red;
 `;
+
+export const NoPetHeading = styled.div`
+  font-size: 1vw;
+  font-weight: 500;
+  text-align: center;
+  background-color: pink;
+  padding: 2vw;
+`;

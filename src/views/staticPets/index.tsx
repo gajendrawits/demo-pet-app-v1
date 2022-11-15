@@ -1,6 +1,6 @@
 import { staticData } from "data";
 import { useDispatch } from "react-redux";
-import { buyPet } from "redux/pet/petActions";
+import { buyPet, wishPet } from "redux/pet/petActions";
 import styled from "styled-components";
 
 interface PetsProps {
@@ -26,7 +26,9 @@ const StaticPets = () => {
             </ImgWrapper>
             <ButtonWrapper>
               <Button onClick={() => dispatch(buyPet(pet))}>Add To 🛒</Button>
-              <WishButton>Add To ♥️</WishButton>
+              <WishButton onClick={() => dispatch(wishPet(pet))}>
+                Add To ♥️
+              </WishButton>
             </ButtonWrapper>
           </ContentWrapper>
         );

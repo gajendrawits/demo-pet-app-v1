@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { buyPet } from "redux/pet/petActions";
+import { buyPet, wishPet } from "redux/pet/petActions";
 
 export const SinglePet = ({ data }: any) => {
   const dispatch = useDispatch();
@@ -16,7 +16,9 @@ export const SinglePet = ({ data }: any) => {
             <Text>Status: {item?.status}</Text>
             <ButtonWrapper>
               <Button onClick={() => dispatch(buyPet(item))}>Add To 🛒</Button>
-              <WishButton>Add To ♥️</WishButton>
+              <WishButton onClick={() => dispatch(wishPet(item))}>
+                Add To ♥️
+              </WishButton>
             </ButtonWrapper>
             <ImageWrapper>
               <Image src={item?.photoUrls} alt={item?.name} />
