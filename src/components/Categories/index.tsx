@@ -12,7 +12,6 @@ const Categories = () => {
   const [loading, setLoading] = useState(false);
 
   const { category } = useParams();
-  console.log(category, "categorywise");
 
   const categoryData = data.filter((item: any) => item.name === category);
 
@@ -35,7 +34,7 @@ const Categories = () => {
         <Loader />
       ) : (
         <Wrapper>
-          <SinglePet data={categoryData} category={category} />
+          <SinglePet data={categoryData} />
         </Wrapper>
       )}
 

@@ -1,6 +1,6 @@
 import { staticData } from "data";
 import { useDispatch } from "react-redux";
-import { buyPet } from "redux/pet/petActions";
+import { buyPet, wishPet } from "redux/pet/petActions";
 import styled from "styled-components";
 
 interface PetsProps {
@@ -26,7 +26,9 @@ const StaticPets = () => {
             </ImgWrapper>
             <ButtonWrapper>
               <Button onClick={() => dispatch(buyPet(pet))}>Add To 🛒</Button>
-              <Button>Add To ♥️</Button>
+              <WishButton onClick={() => dispatch(wishPet(pet))}>
+                Add To ♥️
+              </WishButton>
             </ButtonWrapper>
           </ContentWrapper>
         );
@@ -68,6 +70,21 @@ const TextWrapper = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   gap: 1vw;
+`;
+
+const WishButton = styled.button`
+  font-size: 1vw;
+  font-weight: 900;
+  background-color: #0bcccf;
+  border: none;
+  color: #f4a550;
+  border-radius: 5%;
+  cursor: pointer;
+  :hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.2);
+  }
 `;
 
 const Button = styled.button`
