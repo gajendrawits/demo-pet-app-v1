@@ -29,18 +29,20 @@ const NavBar = () => {
         <CartWrapper>
           <Link to={"/cart"}>
             <CartShowItems>{numOfPets.length}</CartShowItems>
-            <BsCart2 />
+            <BsCart2 className="icons" />
           </Link>
         </CartWrapper>
         <WishListWrapper>
           <Link to={"#"}>
             <WishListShow>{wishPets.length}</WishListShow>
-            <BsBookmarkHeart />
+            <BsBookmarkHeart className="icons" />
           </Link>
         </WishListWrapper>
-        <Link to={"/loginAndsignup"} className="links">
-          <VscAccount />
-        </Link>
+        <AccWrapper>
+          <Link to={"/loginAndsignup"} className="links">
+            <VscAccount className="icons" />
+          </Link>
+        </AccWrapper>
       </NavCartWrapper>
     </NavBarMainWrapper>
   );
@@ -51,6 +53,7 @@ export default NavBar;
 // styles
 const NavBarMainWrapper = styled.div`
   width: 100%;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,8 +99,8 @@ const NavCategoriesWrapper = styled.div`
 
 const NavCartWrapper = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
-  font-size: 2.5vw;
   width: 10vw;
   .links {
     text-decoration: none;
@@ -108,9 +111,17 @@ const NavCartWrapper = styled.div`
       transform: scale(1.2);
     }
   }
+  .icons {
+    color: #6d8297;
+    position: relative;
+    :hover {
+      color: #29abe2;
+    }
+  }
 `;
 
 const CartWrapper = styled.div`
+  font-size: 2.6vw;
   :hover {
     cursor: pointer;
   }
@@ -121,34 +132,51 @@ const CartShowItems = styled.div`
   background-color: black;
   color: white;
   border-radius: 50%;
-  top: 26%;
-  left: 87.9%;
+  top: 1.7vw;
+  right: 10.7vw;
   font-size: 1vw;
-  padding: 2px 7px;
+  padding: 1px 6px;
+  z-index: 1;
   :hover {
     transform: scale(1.2);
-    background-color: green;
+    background-color: #29abe2;
+    color: black;
   }
 `;
 
 const WishListWrapper = styled.div`
+  font-size: 2vw;
+  :hover {
+    cursor: pointer;
+    color: #696969;
+    .icons {
+      :hover {
+        color: red;
+      }
+    }
+  }
+`;
+
+const AccWrapper = styled.div`
+  font-size: 2vw;
   :hover {
     cursor: pointer;
     color: #696969;
   }
 `;
-
 const WishListShow = styled.div`
   position: absolute;
-  background-color: red;
+  background-color: black;
   color: white;
+  z-index: 1;
   border-radius: 50%;
-  top: 20%;
-  left: 91%;
+  top: 1.7vw;
+  right: 7.9vw;
   font-size: 1vw;
-  padding: 2px 8px;
+  padding: 1px 4px;
   :hover {
-    transform: scale(1.2);
-    background-color: green;
+    transform: scale(1.3);
+    background-color: red;
+    color: black;
   }
 `;

@@ -39,15 +39,19 @@ const Footer = () => {
           <Heading>GET IN TOUCH</Heading>
           <SocialWrapper>
             <FaFacebookF />
+            <div>Facebook</div>
           </SocialWrapper>
           <SocialWrapper>
             <FaInstagramSquare />
+            <div>Instagram</div>
           </SocialWrapper>
           <SocialWrapper>
             <FaLinkedinIn />
+            <div>LinkedIn</div>
           </SocialWrapper>
           <SocialWrapper>
             <FaTelegramPlane />
+            <div>Telegram</div>
           </SocialWrapper>
         </SocialMediaWrapper>
       </FooterWrapper>
@@ -77,6 +81,9 @@ const Logo = styled.img`
   width: 5vw;
   height: auto;
   border-radius: 50%;
+  :hover {
+    transform: scale(1.2);
+  }
 `;
 const AccWrapper = styled.div``;
 const CompanyWrapper = styled.div``;
@@ -85,13 +92,17 @@ const ContactWrapper = styled.div`
 `;
 const SocialMediaWrapper = styled.div``;
 const SocialWrapper = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 1vw;
   font-weight: 900;
+  gap: 0.2vw;
   padding: 0.4vw;
-  padding-left: 3vw;
+  color: #6d8297;
   :hover {
     cursor: pointer;
-    color: red;
+    color: #29abe2;
+    transform: scale(1.1);
   }
 `;
 const Heading = styled.div`
@@ -106,5 +117,9 @@ const Text = styled.div`
   font-weight: 700;
   padding: 0.4vw;
   color: #6d8297;
-  cursor: pointer;
+  :hover {
+    cursor: pointer;
+    color: #4a3e3e;
+    transform: scale(1.1);
+  }
 `;

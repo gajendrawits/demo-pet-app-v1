@@ -46,7 +46,7 @@ const ContentMainWrapper = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 0.5vw;
-  padding: 9vw 0;
+  padding: 5vw 0;
 `;
 
 const ContentWrapper = styled.div`
