@@ -13,7 +13,7 @@ const PostPets = () => {
     console.log(data, "datasend");
     await axios
       .post("https://petstore.swagger.io/v2/pet", {
-        name: data.userName,
+        name: data.name,
         category: { name: data.name },
         tags: [{ name: data.breed }],
         photoUrls: [data.photoUrls],
@@ -29,13 +29,14 @@ const PostPets = () => {
   return (
     <PostPetsFormWrapper>
       <PostPetsForm onSubmit={handleSubmit(onSubmit)}>
+        <Heading>Add a Pet</Heading>
         <LabelWrapper>
-          <Label>Owner name</Label>
+          <Label>name</Label>
         </LabelWrapper>
         <InputWrapper>
-          <Input type="text" {...register("OwnerName", { required: true })} />
+          <Input type="text" {...register("name", { required: true })} />
         </InputWrapper>
-        {errors.ownerName && <ErrorMsg>OwnerName is required</ErrorMsg>}
+        {errors.name && <ErrorMsg>name is required</ErrorMsg>}
         <LabelWrapper>
           <Label>Category name</Label>
         </LabelWrapper>
@@ -52,12 +53,12 @@ const PostPets = () => {
         {errors.breed && <ErrorMsg>Breed is required</ErrorMsg>}
 
         <LabelWrapper>
-          <Label>Image url</Label>
+          <Label>photoUrls</Label>
         </LabelWrapper>
         <InputWrapper>
-          <Input type="text" {...register("ImageUrl", { required: true })} />
+          <Input type="text" {...register("photoUrls", { required: true })} />
         </InputWrapper>
-        {errors.ImageUrl && <ErrorMsg>ImageUrl is required</ErrorMsg>}
+        {errors.photoUrls && <ErrorMsg>photoUrls is required</ErrorMsg>}
 
         <LabelWrapper>
           <Label>
@@ -71,7 +72,7 @@ const PostPets = () => {
               <RadioLabel>Yes</RadioLabel>
               <RadioInput
                 type="radio"
-                value="notAvailable"
+                value="sold"
                 {...register("status", { required: true })}
               />
               <RadioLabel>No</RadioLabel>
@@ -97,8 +98,10 @@ const PostPetsFormWrapper = styled.div`
   background-color: #e7e9eb;
   padding: 1vw;
 `;
+const Heading = styled.h1`
+  text-align: center;
+`;
 const PostPetsForm = styled.form`
-  width: 20vw;
   border-radius: 3%;
 `;
 const LabelWrapper = styled.div`

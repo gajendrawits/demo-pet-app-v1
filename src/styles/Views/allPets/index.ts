@@ -36,7 +36,7 @@ export const Wrapper = styled.div``;
 
 export const Heading = styled.div`
   width: 10vw;
-  margin-left: 1.5vw;
+  padding-left: 1.5vw;
   font-size: 1.5vw;
   font-weight: 900;
   margin-top: 1vw;

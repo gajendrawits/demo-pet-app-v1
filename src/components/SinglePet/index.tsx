@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { buyPet, wishPet } from "redux/pet/petActions";
 
 export const SinglePet = ({ data }: any) => {
+  console.log("itemssssss", data);
+
   const dispatch = useDispatch();
 
   return (
