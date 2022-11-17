@@ -1,4 +1,3 @@
-import axios from "axios";
 import Loader from "components/Loader";
 import { SinglePet } from "components/SinglePet";
 import { useEffect, useState } from "react";
@@ -6,6 +5,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "views/footer";
 import NavBar from "views/navBar";
+import axiosInstance from "services/axiosInstance";
 
 const Categories = () => {
   const [data, setData] = useState([]);
@@ -17,8 +17,8 @@ const Categories = () => {
 
   const fetchPets = async () => {
     setLoading(true);
-    await axios
-      .get("https://petstore.swagger.io/v2/pet/findByStatus?status=available")
+    await axiosInstance
+      .get("/findByStatus?status=available")
       .then((response) => setData(response.data));
     setLoading(false);
   };

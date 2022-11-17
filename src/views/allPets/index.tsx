@@ -1,7 +1,7 @@
-import axios from "axios";
 import Loader from "components/Loader";
 import { SinglePet } from "components/SinglePet";
 import { useEffect, useState } from "react";
+import axiosInstance from "services/axiosInstance";
 
 import ReactPaginate from "react-paginate";
 import {
@@ -21,7 +21,7 @@ const AllPets = () => {
   console.log(data, "sold data");
   const [loading, setLoading] = useState(false);
 
-  const PER_PAGE = 5;
+  const PER_PAGE = 6;
   const [currentPage, setCurrentPage] = useState(1);
 
   //12,24,36
@@ -39,20 +39,10 @@ const AllPets = () => {
     setCurrentPage(selectedPage);
   }
 
-  const handleClick = (e: any) => {
-    let status = e.target.value;
-    console.log(status, "e target");
-    setLoading(true);
-    axios
-      .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`)
-      .then((response) => setData(response.data));
-    setLoading(false);
-  };
-
   const fetchPets = async () => {
     setLoading(true);
-    await axios
-      .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=available`)
+    await axiosInstance
+      .get(`/findByStatus?status=available`)
       .then((response) => setData(response.data));
     setLoading(false);
   };
@@ -60,6 +50,16 @@ const AllPets = () => {
   useEffect(() => {
     fetchPets();
   }, []);
+
+  const handleClick = async (e: any) => {
+    let status = e.target.value;
+    console.log(status, "e target");
+    setLoading(true);
+    await axiosInstance
+      .get(`/findByStatus?status=${status}`)
+      .then((response) => setData(response.data));
+    setLoading(false);
+  };
 
   return (
     <MainWrapper>
