@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { buyPet, wishPet } from "redux/pet/petActions";
+import { useNavigate } from "react-router-dom";
 
 export const SinglePet = ({ data }: any) => {
-  console.log("itemssssss", data);
+  // console.log("itemssssss", data);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handleClick = (item: any) => {
+    navigate("/singlePetDetails", { state: item });
+  };
 
   return (
     <MainWrapper>
@@ -22,7 +29,7 @@ export const SinglePet = ({ data }: any) => {
                 Add To ♥️
               </WishButton>
             </ButtonWrapper>
-            <ImageWrapper>
+            <ImageWrapper onClick={() => handleClick(item)}>
               <Image src={item?.photoUrls} alt={item?.name} />
             </ImageWrapper>
           </ContentWrapper>

@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const wishPetReducer = (state = initialState, action: any) => {
-  console.log(action.payload, "payload2");
+  // console.log(action.payload, "payload2");
 
   switch (action.type) {
     case WISH_PET:

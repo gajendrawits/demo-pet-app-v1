@@ -18,7 +18,7 @@ import {
 
 const AllPets = () => {
   const [data, setData] = useState([]);
-  console.log(data, "sold data");
+  // console.log(data, "sold data");
   const [loading, setLoading] = useState(false);
 
   const PER_PAGE = 6;
@@ -32,10 +32,10 @@ const AllPets = () => {
 
   //perPage items(12 perpage)
   const Items = data.slice(offset, offset + PER_PAGE);
-  console.log("items", Items);
+  // console.log("items", Items);
 
   function handlePageClick({ selected: selectedPage }: any) {
-    console.log("selectedPage", selectedPage);
+    // console.log("selectedPage", selectedPage);
     setCurrentPage(selectedPage);
   }
 
@@ -53,7 +53,7 @@ const AllPets = () => {
 
   const handleClick = async (e: any) => {
     let status = e.target.value;
-    console.log(status, "e target");
+    // console.log(status, "e target");
     setLoading(true);
     await axiosInstance
       .get(`/findByStatus?status=${status}`)

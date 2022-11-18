@@ -43,7 +43,7 @@ function Login({ setShow }: Props) {
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         let token = localStorage.getItem("token");
-        console.log(token);
+        // console.log(token);
         token ? navigate("/") : navigate("/loginAndsignup");
       });
   };

@@ -2,14 +2,25 @@ import petshop from "assets/images/logo.jpeg";
 import styled from "styled-components";
 import { BsCart2, BsBookmarkHeart } from "react-icons/bs";
 import { VscAccount } from "react-icons/vsc";
+import { CiLogout } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import Modal from "components/Modal";
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
   const numOfPets = useSelector((state: any) => state.pet.numOfPets);
-  const wishPets = useSelector((state: any) => state.wishPet.wishPets);
-  console.log(wishPets, "wishpets");
-
   // console.log(numOfPets, "total items in cart");
+  const wishPets = useSelector((state: any) => state.wishPet.wishPets);
+  // console.log(wishPets, "wishpets");
+  const token = localStorage.getItem("token");
+  console.log(token, "navtoken");
+
+  const handleLogOut = () => {
+    console.log("logout");
+    setOpen(true);
+  };
+
   return (
     <NavBarMainWrapper>
       <NavLogoWrapper>
@@ -38,12 +49,19 @@ const NavBar = () => {
             <BsBookmarkHeart className="icons" />
           </Link>
         </WishListWrapper>
-        <AccWrapper>
-          <Link to={"/loginAndsignup"} className="links">
-            <VscAccount className="icons" />
-          </Link>
-        </AccWrapper>
+        {token ? (
+          <AccWrapper>
+            <CiLogout className="icons" onClick={handleLogOut} />
+          </AccWrapper>
+        ) : (
+          <AccWrapper>
+            <Link to={"/loginAndsignup"} className="links">
+              <VscAccount className="icons" />
+            </Link>
+          </AccWrapper>
+        )}
       </NavCartWrapper>
+      {open ? <Modal open={open} isClose={() => setOpen(false)} /> : null}
     </NavBarMainWrapper>
   );
 };

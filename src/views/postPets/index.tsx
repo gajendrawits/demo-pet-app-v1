@@ -10,7 +10,7 @@ const PostPets = () => {
     reset,
   } = useForm();
   const onSubmit = async (data: any) => {
-    console.log(data, "datasend");
+    // console.log(data, "datasend");
     await axios
       .post("https://petstore.swagger.io/v2/pet", {
         name: data.name,
@@ -20,7 +20,7 @@ const PostPets = () => {
         status: data.status,
       })
       .then((response) => {
-        console.log(response.data, "res");
+        // console.log(response.data, "res");
       });
     alert("Successfully Added pet");
     reset();
