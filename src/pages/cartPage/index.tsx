@@ -6,11 +6,12 @@ import styled from "styled-components";
 const Cart = () => {
   const dispatch = useDispatch();
   const numOfPets = useSelector((state: any) => state.pet.numOfPets);
-  console.log(numOfPets, "total items in cart");
+  // console.log(numOfPets, "total items in cart");
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
   };
+
   return (
     <MainWrapper style={{}}>
       <BackButton onClick={handleClick}>⬅Back to Home Page</BackButton>
@@ -28,7 +29,8 @@ const Cart = () => {
       {numOfPets.map((item: any, index: number) => {
         return (
           <ItemWrapper key={index}>
-            <ItemName key={index}>Name: {item.name}</ItemName>
+            <ItemName>Name: {item.name}</ItemName>
+            <ItemName>breed: {item.breed}</ItemName>
             <RemoveButton onClick={() => dispatch(removePet(item))}>
               Remove
             </RemoveButton>
@@ -63,10 +65,12 @@ const BackButton = styled.button`
 const Heading = styled.h1``;
 const CartHeading = styled.h2``;
 const ItemWrapper = styled.div`
+  background-color: pink;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2vw;
+  gap: 0.1vw;
+  margin-bottom: 0.5vw;
 `;
 
 const ItemName = styled.div`
@@ -85,7 +89,7 @@ const RemoveButton = styled.button`
   padding: 0.2vw;
   :hover {
     cursor: pointer;
-    background-color: pink;
+    background-color: #08a725;
     color: black;
     transform: scale(1.2);
   }

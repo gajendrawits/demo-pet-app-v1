@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const petReducer = (state = initialState, action: any) => {
-  console.log(action.payload, "payload1");
+  // console.log(action.payload, "payload1");
 
   switch (action.type) {
     case BUY_PET:

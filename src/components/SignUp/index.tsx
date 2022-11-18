@@ -37,7 +37,7 @@ const SignUp = ({ setShow }: Props) => {
   });
   const onSubmit = (data: any) => {
     alert("Successfully created user");
-    console.log(data);
+    // console.log(data);
     setShow(true);
   };
   const navigate = useNavigate();
